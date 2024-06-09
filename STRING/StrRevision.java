@@ -53,6 +53,21 @@ public class StrRevision {
         }
         return sb.toString();
     }
+
+    // For a given Set of String print the largest String
+    // Time Complexity of this function is => O(x*n), x = largest length of String, n = number of string 
+    
+    public static String largestStr(String str[]){
+        String lsStr = str[0];      // assuming the first elems in largestString
+        for (int i = 1; i < str.length; i++) {
+
+            if(lsStr.compareToIgnoreCase(str[i]) < 0){    // found another largest string
+                lsStr = str[i];                 // update String
+            }
+        }
+        return lsStr;
+    }
+
     public static void main(String[] args) {
         // Scanner sc = new Scanner(System.in);
         // System.out.println("Enter a string :");
@@ -64,5 +79,8 @@ public class StrRevision {
 
         String s = "convert first letter to uppercase";
         System.out.println(convertToUppercase(s));
+
+        String str[] = {"apple", "mango", "banana"};
+        System.out.println(largestStr(str));
     }
 }
