@@ -39,9 +39,38 @@ public class RotateArray {
             nums[j] = tempArr[j];
         }
     }
+
+    // Time Complexity : O(n)
+    // Space Complexity : O(1)
+    public static void rotateOptimize(int[] nums, int k) {
+        int n = nums.length;
+        // Edge case
+        if(k == 0 || k == n){
+            return;
+        }
+        // if k > length of array
+        if(k > n){
+            k = k%n;    // new k
+        }
+        // Reverse the whole array
+        reverse(nums, 0, n - 1);
+        // Reverse the first k elements
+        reverse(nums, 0, k - 1);
+        // Reverse the rest of the array
+        reverse(nums, k, n - 1);
+        
+    }
+    public static void reverse(int nums[], int st, int end){
+        while (st < end) {
+            int temp =  nums[st];
+            nums[st]=nums[end];
+            nums[end] = temp;
+            st++; end--;
+        }
+    }
     public static void main(String[] args) {
-        int nums[] = {1,2,3,4,5,6,7}, k = 15;
-        rotate(nums, k);
+        int nums[] = {1,2,3,4,5,6,7}, k = 2;
+        rotateOptimize(nums, k);
         for (int i = 0; i < nums.length; i++) {
             System.out.print(nums[i] + " ");
         }
